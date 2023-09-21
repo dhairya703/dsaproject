@@ -1,6 +1,10 @@
 import 'dart:ui';
+import 'package:firestore/core/utils/size_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import '../../core/app_export.dart';
+import '../core/utils/pref_utils.dart';
 
 /// Helper class for managing themes and colors.
 class ThemeHelper {

@@ -1,7 +1,9 @@
+import 'package:firestore/routes/3rd/frame_fourteen_screen/frame_fourteen_screen.dart';
+
 import 'controller/frame_243_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:shivi_s_application2/core/app_export.dart';
-import 'package:shivi_s_application2/widgets/custom_outlined_button.dart';
+import 'package:firestore/core/app_export.dart';
+import 'package:firestore/widgets/custom_outlined_button.dart';
 
 class Frame243Screen extends GetWidget<Frame243Controller> {
   const Frame243Screen({Key? key}) : super(key: key);
@@ -48,7 +50,7 @@ class Frame243Screen extends GetWidget<Frame243Controller> {
                                                     top: 395.v,
                                                     right: 17.h),
                                                 child: Text(
-                                                    "msg_enter_the_name_of".tr,
+                                                    "Enter the name of your city and the type of consultant \nyou're looking for. and our AI boot will  select the\n best candidate for your task.".tr,
                                                     maxLines: 3,
                                                     overflow:
                                                         TextOverflow.ellipsis,
@@ -58,7 +60,15 @@ class Frame243Screen extends GetWidget<Frame243Controller> {
                                                         .copyWith(
                                                             height: 1.54)))),
                                         CustomOutlinedButton(
-                                            text: "lbl_next".tr,
+                                            text: "Next".tr,
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        FrameFourteenScreen()),
+                                              );
+                                            },
                                             margin: EdgeInsets.only(
                                                 left: 42.h,
                                                 top: 167.v,

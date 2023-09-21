@@ -1,5 +1,6 @@
-import 'package:shivi_s_application2/core/app_export.dart';
-import 'package:shivi_s_application2/presentation/frame_243_screen/models/frame_243_model.dart';
+import 'package:firestore/core/app_export.dart';
+
+import '../models/frame_243_model.dart';
 
 /// A controller class for the Frame243Screen.
 ///

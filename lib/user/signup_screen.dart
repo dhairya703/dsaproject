@@ -5,10 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:sihpro/utils/global_methods.dart';
-import 'package:sihpro/utils/clr.dart';
-import 'package:sihpro/utils/layout.dart';
-import 'package:sihpro/utils/txt.dart';
+import 'package:firestore/core/utils/global_methods.dart';
+import 'package:firestore/core/utils/clr.dart';
+import 'package:firestore/core/utils/layout.dart';
+import 'package:firestore/core/utils/txt.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

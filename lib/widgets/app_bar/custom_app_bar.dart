@@ -1,5 +1,6 @@
+import 'package:firestore/core/utils/size_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:shivi_s_application2/core/app_export.dart';
+import 'package:firestore/core/app_export.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

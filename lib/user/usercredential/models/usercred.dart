@@ -5,18 +5,20 @@ import 'package:firestore/routes/lawyer/lawyercredential/controller/lawyer_cred.
 import 'package:firestore/theme/app_decoration.dart';
 import 'package:firestore/theme/theme_helper.dart';
 import 'package:firestore/user/login_screen.dart';
+import 'package:firestore/user/login_screen2.dart';
 import 'package:firestore/user/signup_screen.dart';
+import 'package:firestore/user/usercredential/controller/usercred.dart';
 import 'package:firestore/widgets/custom_image_view.dart';
 import 'package:firestore/widgets/custom_outlined_button.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-// import 'controller/lawyer_cred.dart';
+// import 'controller/usercred.dart';
 import 'package:flutter/material.dart';
 
 
 // ignore_for_file: must_be_immutable
-class Lawyer extends GetWidget<Lawyercred> {
-  const Lawyer({Key? key})
+class User extends GetWidget<usercred> {
+  const User({Key? key})
       : super(
     key: key,
   );
@@ -80,12 +82,12 @@ class Lawyer extends GetWidget<Lawyercred> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      Lawyer()),
+                                      LoginScreen2()),
                             );
                           },
 
                           height: 60.v,
-                          text: "Login as a Lawyer".tr,
+                          text: "Login".tr,
                           buttonStyle: CustomButtonStyles.outlinePrimary,
                         ),
                         SizedBox(height: 26.v),
@@ -100,7 +102,7 @@ class Lawyer extends GetWidget<Lawyercred> {
                           },
 
                           height: 50.v,
-                          text: "Login as a User".tr,
+                          text: "Signup".tr,
                           buttonStyle: CustomButtonStyles.outlineBlueGray,
                           buttonTextStyle: CustomTextStyles.titleSmallInter,
                         ),

@@ -1,23 +1,37 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firestore/config/firebase_auth_service.dart';
+import 'package:firestore/core/utils/image_constant.dart';
+import 'package:firestore/core/utils/size_utils.dart';
+import 'package:firestore/lawyerspage/lawyerplat.dart';
+import 'package:firestore/routes/initial/frame_244_screen.dart';
+import 'package:firestore/theme/custom_button_style.dart';
+import 'package:firestore/upload.dart';
+import 'package:firestore/user/signup_screen.dart';
+import 'package:firestore/widgets/custom_elevated_button.dart';
+import 'package:firestore/widgets/custom_image_view.dart';
+import 'package:firestore/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:sihpro/Homecreens/Homescreen.dart';
+// import 'package:firestore/Homecreens/Homescreen.dart';
 
-import 'package:sihpro/config/firebase_auth_service.dart';
-import 'package:sihpro/homepage.dart';
-import 'package:sihpro/screens/user/forgot_password.dart';
-import 'package:sihpro/screens/user/signup_screen.dart';
-import 'package:sihpro/widgets/custom_textfield.dart';
+import 'package:firestore/config/firebase_auth_service.dart';
+// import 'package:firestore/homepage.dart';
+import 'package:firestore/user/forgot_password.dart';
+import 'package:firestore/user/signup_screen.dart';
+import 'package:firestore/widgets/custom_textfield.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 import '../../widgets/custom_button.dart';
+import '../theme/custom_text_style.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreen1 extends StatefulWidget {
+  const LoginScreen1({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen1> createState() => _LoginScreen1State();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreen1State extends State<LoginScreen1> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
@@ -35,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
           title: const Padding(
             padding: EdgeInsets.only(left: 230),
             child: Text(
-              "getJOBS",
+              "NYAY BANDHU",
               style: TextStyle(color: Colors.orange),
             ),
           ),
@@ -119,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  HomePage()));
+                                builder: (context) =>  Upload()));
                       }
                     } on FirebaseException catch (e) {
                       debugPrint("error is ${e.message}");
@@ -135,16 +149,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                   title: const Text(
                                       " Invalid Username or password. Please register again or make sure that username and password is correct"),
                                   actions: [
-                                    ElevatedButton(
-                                      child: const Text("Register Now"),
-                                      onPressed: () {
+                                    CustomElevatedButton(
+                                      onTap: (){
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     SignUpScreen()));
                                       },
-                                    )
+                                        height: 47.v,
+                                        text: "msg_continue_with_gmail".tr,
+                                        leftIcon: Container(
+                                            margin: EdgeInsets.only(
+                                                right: 12.h),
+                                            child: CustomImageView(
+                                                imagePath: ImageConstant
+                                                    .imgGoog0ed88f7c1,
+                                                height: 32.adaptSize,
+                                                width: 32.adaptSize)),
+                                        buttonStyle: CustomButtonStyles
+                                            .fillOnPrimaryContainerTL23,
+                                        buttonTextStyle: CustomTextStyles
+                                            .titleSmallInterBlack90002)
+
                                   ]));
                     }
 

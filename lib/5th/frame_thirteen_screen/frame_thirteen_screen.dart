@@ -1,11 +1,18 @@
+import 'package:firestore/core/app_export.dart';
+import 'package:firestore/core/utils/image_constant.dart';
+import 'package:firestore/core/utils/validation_functions.dart';
+import 'package:firestore/theme/custom_text_style.dart';
+import 'package:firestore/widgets/app_bar/custom_app_bar.dart';
+import 'package:firestore/widgets/custom_elevated_button.dart';
+import 'package:firestore/widgets/custom_image_view.dart';
+import 'package:firestore/widgets/custom_outlined_button.dart';
+import 'package:firestore/widgets/custom_text_form_field.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+
+import '../../core/utils/size_utils.dart';
 import 'controller/frame_thirteen_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:shivi_s_application2/core/app_export.dart';
-import 'package:shivi_s_application2/core/utils/validation_functions.dart';
-import 'package:shivi_s_application2/widgets/app_bar/custom_app_bar.dart';
-import 'package:shivi_s_application2/widgets/custom_elevated_button.dart';
-import 'package:shivi_s_application2/widgets/custom_outlined_button.dart';
-import 'package:shivi_s_application2/widgets/custom_text_form_field.dart';
+
 
 // ignore_for_file: must_be_immutable
 class FrameThirteenScreen extends GetWidget<FrameThirteenController> {
@@ -95,7 +102,7 @@ class FrameThirteenScreen extends GetWidget<FrameThirteenController> {
                                       child: Column(children: [
                                         CustomTextFormField(
                                             controller:
-                                                controller.userNameController,
+                                                controller.emailController,
                                             hintText: "lbl_username".tr,
                                             validator: (value) {
                                               if (!isText(value)) {
@@ -161,6 +168,9 @@ class FrameThirteenScreen extends GetWidget<FrameThirteenController> {
                                                         .bodyLargeOnPrimaryContainer))),
                                         SizedBox(height: 53.v),
                                         CustomOutlinedButton(
+                                         onTap: (){
+
+                                         },
                                             height: 59.v,
                                             text: "lbl_login3".tr,
                                             buttonStyle: CustomButtonStyles
