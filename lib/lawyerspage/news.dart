@@ -13,8 +13,11 @@ class _NewsListState extends State<NewsList> {
     return Scaffold(
       backgroundColor:  Color(0xFF061E35),
       appBar: AppBar(
-        title: Text('Firestore News'),
+        backgroundColor: Color(0xff660033)
+        , iconTheme: IconThemeData(color: Colors.white),
+        title: Text('Nyay Bandhu',style: TextStyle(color: Colors.white),),
       ),
+
       body: StreamBuilder<QuerySnapshot>(
         stream: _firestore.collection('news').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

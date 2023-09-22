@@ -10,8 +10,11 @@ class DocumentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Documents Section"),
+        backgroundColor: Color(0xff660033)
+        , iconTheme: IconThemeData(color: Colors.white),
+        title: Text('Nyay Bandhu',style: TextStyle(color: Colors.white),),
       ),
+
       body: SingleChildScrollView(
         child:  Column(
             children: [Image.asset(
