@@ -2,9 +2,11 @@ import 'package:firestore/user/sendrequest.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DataFetch extends StatefulWidget {
+class civil extends StatefulWidget {
+  const civil({Key? key}) : super(key: key);
+
   @override
-  _DataFetchState createState() => _DataFetchState();
+  _civilState createState() => _civilState();
 }
 
 enum FilterOption {
@@ -14,50 +16,35 @@ enum FilterOption {
   Corporate,
   PublicInterest,
   Immigration,
-  IntellectualProperty
+  IntellectualProperty,
 }
 
-class _DataFetchState extends State<DataFetch> {
+class _civilState extends State<civil> {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
-  FilterOption selectedFilter = FilterOption.All;
+  FilterOption selectedFilter = FilterOption
+      .Civil; // Set the initial filter
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Available Lawyers"),
+        title: Text("Civil Lawyers"),
       ),
       body: Column(
         children: [
-          DropdownButton<FilterOption>(
-            // Dropdown button for selecting a filter
-            value: selectedFilter,
-            onChanged: (newValue) {
-              setState(() {
-                selectedFilter = newValue!;
-              });
-            },
-            items: FilterOption.values.map((option) {
-              return DropdownMenuItem<FilterOption>(
-                value: option,
-                child: Text(option.toString().split('.').last),
-              );
-            }).toList(),
-          ),
-
           Expanded(
             child: StreamBuilder(
               stream: selectedFilter == FilterOption.All
                   ? users.snapshots()
                   : users
-                  .where('filter', isEqualTo: selectedFilter.toString().split('.').last)
+                  .where('filter', isEqualTo: 'Civil')
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-  }
+                }
 
                 var documents = snapshot.data!.docs;
 
@@ -107,26 +94,13 @@ class _DataFetchState extends State<DataFetch> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          contentPadding: EdgeInsets.all(16),
+          title: Text(data['name'] ?? ''),
           content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              CircleAvatar(
-                radius: 80, // Adjust the size as needed
-                backgroundImage: NetworkImage(data['images'] ?? ''), // Use the image URL if available
-                backgroundColor: Colors.grey, // Use a placeholder background color
-              ),
-              SizedBox(height: 16), // Add spacing between image and name
-              Text(
-                data['name'] ?? '',
-                style: TextStyle(
-                  fontSize: 18, // Adjust the font size as needed
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 8), // Add spacing between name and description
               Text(data['description'] ?? ''),
-              SizedBox(height: 20), // Add spacing between text and buttons
+              SizedBox(height: 20), // Add some spacing between text and buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -153,4 +127,5 @@ class _DataFetchState extends State<DataFetch> {
       },
     );
   }
+
 }

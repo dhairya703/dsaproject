@@ -10,6 +10,8 @@ import 'package:firestore/core/utils/clr.dart';
 import 'package:firestore/core/utils/layout.dart';
 import 'package:firestore/core/utils/txt.dart';
 
+import '../core/utils/colors.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -87,27 +89,29 @@ class _SignUpScreenState extends State<SignUpScreen>
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(
-            color: Colors.orange,
-          ),
-          title: const Padding(
-            padding: EdgeInsets.only(left: 180),
-            child: Text(
-              "getJOBS",
-              style: TextStyle(color: Colors.orange),
-            ),
-          ),
-        ),
+appBar: AppBar(title: Text("NYAYA BANDHU",style: TextStyle(color: Colors.white),),backgroundColor:  Color(0xFF061E35),),
         body: Stack(children: [
+
           _signUpBackground(),
           Container(
-            color: Colors.black54,
+            color: Color(0xfff5f5dc),
             child: Padding(
               padding: const EdgeInsets.all(layout.padding * 1.5),
               child: ListView(children: [
+                Container(
+                  width: 400,
+                  height: 200,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: CircleBorder(), // Use CircleBorder for oval shape
+                  ),
+                  child: Image.asset(
+                    'assets/images/emblemnew.png', // Replace with your image path
+                    width: 30, // Adjust the image size as needed
+                    height: 50,
+                    fit: BoxFit.fill, // You can use BoxFit to specify how the image should be fitted
+                  ),
+                ),
                 Form(
                   key: _signUpFormKey,
                   child: Column(children: [
@@ -151,7 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen>
 
   Widget _signUpBackground() {
     return Container(
-      color: Colors.white,
+      color:Color(0xfff5f5dc)
     );
   }
 
@@ -167,13 +171,13 @@ class _SignUpScreenState extends State<SignUpScreen>
       onEditingComplete: () => _emailFocusNode.requestFocus(),
       decoration: InputDecoration(
         labelText: 'Name',
-        labelStyle: txt.labelLight,
+        labelStyle: txt.labelDark,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
-        floatingLabelStyle: txt.labelLight,
+        floatingLabelStyle: txt.labelDark,
         errorStyle: txt.error,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
-            color: clr.light,
+            color: Colors.black,
           ),
         ),
         focusedBorder: const UnderlineInputBorder(
@@ -203,19 +207,19 @@ class _SignUpScreenState extends State<SignUpScreen>
       focusNode: _emailFocusNode,
       autofocus: false,
       controller: _emailController,
-      style: txt.fieldLight,
+      style: txt.labelDark,
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       onEditingComplete: () => _passwordFocusNode.requestFocus(),
       decoration: InputDecoration(
         labelText: 'Email',
-        labelStyle: txt.labelLight,
+        labelStyle: txt.labelDark,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
-        floatingLabelStyle: txt.labelLight,
+        floatingLabelStyle: txt.labelDark,
         errorStyle: txt.error,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
-            color: clr.light,
+            color: Colors.black,
           ),
         ),
         focusedBorder: const UnderlineInputBorder(
@@ -251,13 +255,13 @@ class _SignUpScreenState extends State<SignUpScreen>
       onEditingComplete: () => _phoneFocusNode.requestFocus(),
       decoration: InputDecoration(
         labelText: 'Password',
-        labelStyle: txt.labelLight,
+        labelStyle: txt.labelDark,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
-        floatingLabelStyle: txt.labelLight,
+        floatingLabelStyle: txt.labelDark,
         errorStyle: txt.error,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
-            color: clr.light,
+            color: Colors.black,
           ),
         ),
         focusedBorder: const UnderlineInputBorder(
@@ -293,13 +297,13 @@ class _SignUpScreenState extends State<SignUpScreen>
       onEditingComplete: () => _aadharFocusNode.requestFocus(),
       decoration: InputDecoration(
         labelText: 'Phone number',
-        labelStyle: txt.labelLight,
+        labelStyle: txt.labelDark,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
-        floatingLabelStyle: txt.labelLight,
+        floatingLabelStyle: txt.labelDark,
         errorStyle: txt.error,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
-            color: clr.light,
+            color: Colors.black,
           ),
         ),
         focusedBorder: const UnderlineInputBorder(
@@ -329,19 +333,19 @@ class _SignUpScreenState extends State<SignUpScreen>
       focusNode: _aadharFocusNode,
       autofocus: false,
       controller: _aadharController,
-      style: txt.fieldLight,
+      style: txt.labelDark,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.done,
       onEditingComplete: () => _aadharFocusNode.unfocus(),
       decoration: InputDecoration(
-        labelText: 'Aadhar Number',
-        labelStyle: txt.labelLight,
+        labelText: 'Pan Number',
+        labelStyle: txt.labelDark,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
-        floatingLabelStyle: txt.labelLight,
+        floatingLabelStyle: txt.labelDark,
         errorStyle: txt.error,
         enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
-            color: clr.light,
+            color: Colors.black,
           ),
         ),
         focusedBorder: const UnderlineInputBorder(
@@ -388,15 +392,17 @@ class _SignUpScreenState extends State<SignUpScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              Text(
-                'Sign up   ',
-                style: txt.button,
-              ),
               Icon(
                 Icons.person_add,
                 color: Colors.white,
                 size: layout.iconMedium,
-              )
+              ),
+              SizedBox(width: 5,),
+              Text(
+                'Sign up   ',
+                style: txt.button,
+              ),
+
             ]),
       ),
     );
@@ -453,15 +459,16 @@ class _SignUpScreenState extends State<SignUpScreen>
         text: TextSpan(children: [
           const TextSpan(
             text: 'Already have an account?',
-            style: txt.body2Light,
+            style: txt.body1Dark,
+
           ),
-          const TextSpan(text: '     '),
+          const TextSpan(text: '  '),
           TextSpan(
             recognizer: TapGestureRecognizer()
               ..onTap = () =>
               Navigator.canPop(context) ? Navigator.pop(context) : null,
             text: 'Login',
-            style: txt.mediumTextButton,
+            style: txt.smallTextButton,
           ),
         ]),
       ),

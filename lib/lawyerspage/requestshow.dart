@@ -1,10 +1,11 @@
+import 'package:firestore/user/chatpage.dart';
 import 'package:firestore/user/sendrequest.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DataFetch extends StatefulWidget {
+class FetchRequestsScreen extends StatefulWidget {
   @override
-  _DataFetchState createState() => _DataFetchState();
+  _FetchRequestsScreenState createState() => _FetchRequestsScreenState();
 }
 
 enum FilterOption {
@@ -17,15 +18,15 @@ enum FilterOption {
   IntellectualProperty
 }
 
-class _DataFetchState extends State<DataFetch> {
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+class _FetchRequestsScreenState extends State<FetchRequestsScreen> {
+  CollectionReference request = FirebaseFirestore.instance.collection('request');
   FilterOption selectedFilter = FilterOption.All;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Available Lawyers"),
+        title: Text("Request Pending"),
       ),
       body: Column(
         children: [
@@ -48,8 +49,8 @@ class _DataFetchState extends State<DataFetch> {
           Expanded(
             child: StreamBuilder(
               stream: selectedFilter == FilterOption.All
-                  ? users.snapshots()
-                  : users
+                  ? request.snapshots()
+                  : request
                   .where('filter', isEqualTo: selectedFilter.toString().split('.').last)
                   .snapshots(),
               builder: (context, snapshot) {
@@ -57,7 +58,7 @@ class _DataFetchState extends State<DataFetch> {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-  }
+                }
 
                 var documents = snapshot.data!.docs;
 
@@ -72,24 +73,31 @@ class _DataFetchState extends State<DataFetch> {
                         _showDetailsDialog(data);
                       },
                       child: Card(
-                        margin: EdgeInsets.all(10),
-                        elevation: 4,
-                        child: ListTile(
-                          title: Text(data['name'] ?? ''),
-                          subtitle: Text(data['description'] ?? ''),
-                          leading: data['images'] != null
-                              ? Image.network(
-                            data['images'],
-                            errorBuilder:
-                                (context, error, stackTrace) {
-                              return Image.network(
-                                  'images'); // Replace with your placeholder image
-                            },
-                          )
-                              : Image.asset(
-                              'Image not available'), // Display a placeholder if 'image_url' is missing
-                          // Add more card content here based on your data
-                        ),
+                        color: Colors.red,
+                        child:
+                          Column(
+                            children:[ ListTile(
+                              title: Text(data['name'] ?? ''),
+
+                              subtitle: Text(data['description'] ?? ''),
+
+                              leading: data['images'] != null
+                                  ? Image.network(
+                                data['images'],
+                                errorBuilder:
+                                    (context, error, stackTrace) {
+                                  return Image.network(
+                                      'images'); // Replace with your placeholder image
+                                },
+                              )
+                                  : Image.asset(
+                                  'Image not available'), // Display a placeholder if 'image_url' is missing
+                              // Add more card content here based on your data
+                            ),
+                              Text(data['contactnumber'] ?? ''),
+                              Text(data['address'] ?? '')
+                     ] ),
+
                       ),
                     );
                   },
@@ -134,10 +142,10 @@ class _DataFetchState extends State<DataFetch> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => sendrequest()),
+                        MaterialPageRoute(builder: (context) => ChatPage()),
                       );
                     },
-                    child: Text('Request'),
+                    child: Text('Approve'),
                   ),
                   TextButton(
                     onPressed: () {
