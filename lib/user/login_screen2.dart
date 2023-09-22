@@ -1,13 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firestore/components/square_tile.dart';
 import 'package:firestore/config/firebase_auth_service.dart';
 import 'package:firestore/core/utils/image_constant.dart';
 import 'package:firestore/core/utils/size_utils.dart';
-import 'package:firestore/displaying%20data.dart';
+import 'package:firestore/lawyerspage/lawyerplat.dart';
 import 'package:firestore/routes/initial/frame_244_screen.dart';
 import 'package:firestore/theme/custom_button_style.dart';
 import 'package:firestore/upload.dart';
+import 'package:firestore/user/phone.dart';
 import 'package:firestore/user/signup_screen.dart';
+import 'package:firestore/userspage/userplat.dart';
 import 'package:firestore/widgets/custom_elevated_button.dart';
 import 'package:firestore/widgets/custom_image_view.dart';
 import 'package:firestore/widgets/custom_textfield.dart';
@@ -23,7 +26,6 @@ import 'package:get/get_utils/get_utils.dart';
 
 import '../../widgets/custom_button.dart';
 import '../theme/custom_text_style.dart';
-import '../userspage/userplat.dart';
 
 class LoginScreen2 extends StatefulWidget {
   const LoginScreen2({Key? key}) : super(key: key);
@@ -39,43 +41,40 @@ class _LoginScreen2State extends State<LoginScreen2> {
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor = Color(0xfff5f5dc);
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          iconTheme: const IconThemeData(
-            color: Colors.orange,
-          ),
-          automaticallyImplyLeading: false,
-          title: const Padding(
-            padding: EdgeInsets.only(left: 230),
-            child: Text(
-              "NYAY BANDHU",
-              style: TextStyle(color: Colors.orange),
-            ),
-          ),
-        ),
+        backgroundColor: backgroundColor,
+
         body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
+                SizedBox(height: 50,),
+                Text(
+                  'NYAYA BANDHU', // Added title
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30, // Adjust the font size as needed
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Gloock',
+                  ),
+                ),
+
+                Container(
+                  width: 400,
+                  height: 200,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: CircleBorder(), // Use CircleBorder for oval shape
+                  ),
+                  child: Image.asset(
+                    'assets/images/emblemnew.png', // Replace with your image path
+                    width: 30, // Adjust the image size as needed
                     height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 1),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                        icon: const Icon(Icons.arrow_back_ios_sharp),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        }),
+                    fit: BoxFit.fill, // You can use BoxFit to specify how the image should be fitted
                   ),
                 ),
                 const Padding(
@@ -134,7 +133,7 @@ class _LoginScreen2State extends State<LoginScreen2> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  DataFetch()));
+                                builder: (context) =>  Userplat()));
                       }
                     } on FirebaseException catch (e) {
                       debugPrint("error is ${e.message}");
@@ -274,6 +273,59 @@ class _LoginScreen2State extends State<LoginScreen2> {
                 */
                 const SizedBox(
                   height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Text(
+                          'Or continue with',
+                          style: TextStyle(color: Colors.grey[700]),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 30),
+
+                // google + apple sign in buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:  [
+                    // google button
+                    SquareTile(imagePath: 'assets/images/google.png'),
+
+                    SizedBox(width: 25),
+
+                    // apple button
+                    SquareTile(imagePath: 'assets/images/apple.png'),
+                    SizedBox(width: 25),
+
+                    // ADHAAR BUTTON
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyPhone()),
+                        );
+                      },
+                      child: SquareTile(imagePath: 'assets/images/adhaaricon.png'),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(48, 8, 8, 8.0),

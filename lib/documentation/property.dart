@@ -2,23 +2,21 @@ import 'package:firestore/user/sendrequest.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DataFetch extends StatefulWidget {
+class property extends StatefulWidget {
   @override
-  _DataFetchState createState() => _DataFetchState();
+  _propertyState createState() => _propertyState();
 }
 
 enum FilterOption {
   All,
-  CriminalDefense,
-  Civil,
-  Corporate,
-  PublicInterest,
-  Immigration,
-  IntellectualProperty
+  PropertyProducts,
+  DocumentReview,
+  
+
 }
 
-class _DataFetchState extends State<DataFetch> {
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+class _propertyState extends State<property> {
+  CollectionReference documentation = FirebaseFirestore.instance.collection('documentation');
   FilterOption selectedFilter = FilterOption.All;
 
   @override
@@ -48,8 +46,8 @@ class _DataFetchState extends State<DataFetch> {
           Expanded(
             child: StreamBuilder(
               stream: selectedFilter == FilterOption.All
-                  ? users.snapshots()
-                  : users
+                  ? documentation.snapshots()
+                  : documentation
                   .where('filter', isEqualTo: selectedFilter.toString().split('.').last)
                   .snapshots(),
               builder: (context, snapshot) {
@@ -57,7 +55,7 @@ class _DataFetchState extends State<DataFetch> {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
-  }
+                }
 
                 var documents = snapshot.data!.docs;
 
@@ -74,23 +72,48 @@ class _DataFetchState extends State<DataFetch> {
                       child: Card(
                         margin: EdgeInsets.all(10),
                         elevation: 4,
-                        child: ListTile(
-                          title: Text(data['name'] ?? ''),
-                          subtitle: Text(data['description'] ?? ''),
-                          leading: data['images'] != null
-                              ? Image.network(
-                            data['images'],
-                            errorBuilder:
-                                (context, error, stackTrace) {
-                              return Image.network(
-                                  'images'); // Replace with your placeholder image
-                            },
-                          )
-                              : Image.asset(
-                              'Image not available'), // Display a placeholder if 'image_url' is missing
-                          // Add more card content here based on your data
+                        child: Column(
+                          children: [
+                            ListTile(
+                              title: Text(data['topic'] ?? ''),
+                              // subtitle: Text(data['legalissue'] ?? ''),
+                              leading: SizedBox(
+                                width: 80, // Set the width of the leading widget
+                                height: 80, // Set the height of the leading widget
+                                child: Align(
+                                  alignment: Alignment.center, // Align the image to the center
+                                  child: data['images'] != null
+                                      ? Image.network(
+                                    data['images'],
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Image.network(
+                                          'images'); // Replace with your placeholder image
+                                    },
+                                  )
+                                      : Image.asset(
+                                    'Image not available',
+                                  ), // Display a placeholder if 'image_url' is missing
+                                ),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text('Rating: ${data['rating'] ?? ''} 🌟'),
+                                      Text('(${data['reviews'] ?? ''})'),
+
+                                    ],
+                                  ),
+                                  Text('${data['purchases'] ?? ''}'),
+                                  Text('Cost: Rs ${data['price'] ?? ''}'),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+
                     );
                   },
                 );
@@ -117,13 +140,7 @@ class _DataFetchState extends State<DataFetch> {
                 backgroundColor: Colors.grey, // Use a placeholder background color
               ),
               SizedBox(height: 16), // Add spacing between image and name
-              Text(
-                data['name'] ?? '',
-                style: TextStyle(
-                  fontSize: 18, // Adjust the font size as needed
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Text(data['topic'] ?? ''),
               SizedBox(height: 8), // Add spacing between name and description
               Text(data['description'] ?? ''),
               SizedBox(height: 20), // Add spacing between text and buttons
@@ -137,7 +154,7 @@ class _DataFetchState extends State<DataFetch> {
                         MaterialPageRoute(builder: (context) => sendrequest()),
                       );
                     },
-                    child: Text('Request'),
+                    child: Text('Buy Now'),
                   ),
                   TextButton(
                     onPressed: () {
