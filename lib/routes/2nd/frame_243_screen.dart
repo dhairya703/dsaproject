@@ -33,7 +33,7 @@ class Frame243Screen extends GetWidget<Frame243Controller> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        SizedBox(height: 25.v),
+                                        SizedBox(height: 53.v),
                                         CustomImageView(
                                             svgPath: ImageConstant.imgArrowleft,
                                             height: 36.adaptSize,
@@ -50,7 +50,7 @@ class Frame243Screen extends GetWidget<Frame243Controller> {
                                                     top: 395.v,
                                                     right: 17.h),
                                                 child: Text(
-                                                    "Enter the name of your city and the type of consultant \nyou're looking for. and our AI boot will  select the\n best candidate for your task.".tr,
+                                                    "Enter the name of your city and \n the type of consultant you're looking for. \n and our AI boot will  select the best candidate for your task.".tr,
                                                     maxLines: 3,
                                                     overflow:
                                                         TextOverflow.ellipsis,
@@ -79,9 +79,14 @@ class Frame243Screen extends GetWidget<Frame243Controller> {
                                                 child: CustomImageView(
                                                     svgPath: ImageConstant
                                                         .imgArrowright)),
-                                            buttonTextStyle: CustomTextStyles
-                                                .labelLargeInterOnPrimary)
-                                      ]))),
+                                            buttonTextStyle: CustomTextStyles.labelLargeInterGray90002.copyWith(
+                                              color: Colors.yellow, // Set the text color to yellow.
+                                            ),
+                                        )
+                                      ]
+                                  )
+                              )
+                          ),
                           CustomImageView(
                               imagePath: ImageConstant
                                   .imgCloseofgavelincourtroom282x320,

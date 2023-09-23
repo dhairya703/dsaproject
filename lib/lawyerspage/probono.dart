@@ -18,7 +18,7 @@ class _probonoState extends State<probono> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Probono Cases"),
+        title: Text("Nyaya Bandhu"),
       ),
       body: Column(
         children: [
@@ -72,6 +72,25 @@ class _probonoState extends State<probono> {
           ),
         ],
       ),
+        bottomNavigationBar: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Color(0xffF5F5DC),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+                backgroundColor: Color(0xffF5F5DC),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                backgroundColor: Color(0xffF9F5DC),
+              ),
+            ]
+        )
     );
   }
 

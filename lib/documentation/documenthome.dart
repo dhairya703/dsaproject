@@ -10,19 +10,19 @@ class DocumentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Documents Section"),
+        title: Text("NYAYA BANDHU"),
       ),
       body: SingleChildScrollView(
         child:  Column(
             children: [Image.asset(
-              "assets/images/img_rectangle131.png",
+              "assets/images/employe.jpeg",
               // You can adjust the width and height as needed
               width: double.infinity, // Set the width to the full screen width
               height: 300, // Set the desired height
               fit: BoxFit.cover, // Adjust the fit as needed
             ),
               Card(
-                color: Colors.red,
+                color: Color(0xff660033),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left)
                   children: [
@@ -30,15 +30,15 @@ class DocumentPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0), // Add padding for better spacing
                       child: Text(
                         "Property",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle61_96x84.png",
-                          label: "Civil",
+                          imageAsset: "assets/images/will.jpg",
+                          label: "Will Registration",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -47,8 +47,8 @@ class DocumentPage extends StatelessWidget {
                           },
                         ),
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle62.png",
-                          label: "Public Interest",
+                          imageAsset: "assets/images/poa.png",
+                          label: "Power Of Attorney",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -57,8 +57,8 @@ class DocumentPage extends StatelessWidget {
                           },
                         ),
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle63.png",
-                          label: "Corporate",
+                          imageAsset: "assets/images/giftdeed.jpg",
+                          label: "Gift Deed",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -76,23 +76,23 @@ class DocumentPage extends StatelessWidget {
                 height: 10,
               ),
               Card(
-                color: Colors.red,
+                color: Color(0xff660033),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left)
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0), // Add padding for better spacing
                       child: Text(
-                        "Document",
-                        style: TextStyle(fontSize: 20),
+                        "Agreement and contracts",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle61_96x84.png",
-                          label: "Civil",
+                          imageAsset: "assets/images/agree.jpeg",
+                          label: "Freelancer Agreement",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -102,8 +102,8 @@ class DocumentPage extends StatelessWidget {
                           },
                         ),
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle62.png",
-                          label: "Public Interest",
+                          imageAsset: "assets/images/agree.jpeg",
+                          label: "Letter of Intent",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -113,8 +113,8 @@ class DocumentPage extends StatelessWidget {
                           },
                         ),
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle63.png",
-                          label: "Corporate",
+                          imageAsset: "assets/images/agree.jpeg",
+                          label: "Loan Agreement",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -133,7 +133,7 @@ class DocumentPage extends StatelessWidget {
                 height: 10,
               ),
               Card(
-                color: Colors.red,
+                color: Color(0xff660033),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left)
                   children: [
@@ -141,15 +141,15 @@ class DocumentPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0), // Add padding for better spacing
                       child: Text(
                         "StartUp",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle61_96x84.png",
-                          label: "Civil",
+                          imageAsset: "assets/images/nda.jpeg",
+                          label: "NDA",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -159,8 +159,8 @@ class DocumentPage extends StatelessWidget {
                           },
                         ),
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle62.png",
-                          label: "Public Interest",
+                          imageAsset: "assets/images/will.jpeg",
+                          label: "Will",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -170,8 +170,8 @@ class DocumentPage extends StatelessWidget {
                           },
                         ),
                         DocumentCard(
-                          imageAsset: "assets/images/img_rectangle63.png",
-                          label: "Corporate",
+                          imageAsset: "assets/images/employe.jpeg",
+                          label: "Employee Agreement",
                           onTap: () {
                             Navigator.push(
                               context,
@@ -189,6 +189,25 @@ class DocumentPage extends StatelessWidget {
             ],
           ),
         ),
+    bottomNavigationBar: BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+    icon: Icon(Icons.home),
+    label: 'Home',
+    backgroundColor: Color(0xffF5F5DC),
+    ),
+    BottomNavigationBarItem(
+    icon: Icon(Icons.search),
+    label: 'Search',
+    backgroundColor: Color(0xffF5F5DC),
+    ),
+    BottomNavigationBarItem(
+    icon: Icon(Icons.person),
+    label: 'Profile',
+    backgroundColor: Color(0xffF9F5DC),
+    ),
+    ],
+    )
 
     );
   }

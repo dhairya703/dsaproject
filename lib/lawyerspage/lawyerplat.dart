@@ -206,7 +206,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_layer1_black_900_02_38x50.png',
+                                  'assets/images/hc.jpeg',
                                   // Replace with your image path
                                   width: 30, // Adjust the image size as needed
                                   height: 50,
@@ -246,7 +246,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_group668.png',
+                                  'assets/images/docu.jpeg',
                                   // Replace with your image path
                                   width: 60, // Adjust the image size as needed
                                   height: 60,
@@ -286,7 +286,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_layer1_black_900_02.png',
+                                  'assets/images/dispute.jpeg',
                                   // Replace with your image path
                                   width: 60, // Adjust the image size as needed
                                   height: 60,
@@ -334,7 +334,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_layer1_black_900_40x34.png',
+                                  'assets/images/requests.jpg',
                                   // Replace with your image path
                                   width: 30, // Adjust the image size as needed
                                   height: 50,
@@ -371,7 +371,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(),
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_layer1_black_900_39x39.png',
+                                  'assets/images/indiank.jpg',
                                   width: 30,
                                   height: 50,
                                   fit: BoxFit.fill,
@@ -408,7 +408,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_screenshot20230919at320.png',
+                                  'assets/images/latestn.jpg',
                                   // Replace with your image path
                                   width: 30, // Adjust the image size as needed
                                   height: 50,
@@ -453,7 +453,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_layer1_black_900_40x34.png',
+                                  'assets/images/ecourt.jpg',
                                   // Replace with your image path
                                   width: 30, // Adjust the image size as needed
                                   height: 50,
@@ -493,7 +493,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(),
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_layer1_black_900_39x39.png',
+                                  'assets/images/probono.jpg',
                                   width: 30,
                                   height: 50,
                                   fit: BoxFit.fill,
@@ -530,7 +530,7 @@ class _LawyerplatState extends State<Lawyerplat> {
                                   shape: CircleBorder(), // Use CircleBorder for oval shape
                                 ),
                                 child: Image.asset(
-                                  'assets/images/img_screenshot20230919at320.png',
+                                  'assets/images/helpme.jpg',
                                   // Replace with your image path
                                   width: 30, // Adjust the image size as needed
                                   height: 50,
@@ -580,7 +580,8 @@ class _LawyerplatState extends State<Lawyerplat> {
               ),
             )
           ),
-        ],)
+        ],
+      )
 
       ),
       bottomNavigationBar: BottomNavigationBar(

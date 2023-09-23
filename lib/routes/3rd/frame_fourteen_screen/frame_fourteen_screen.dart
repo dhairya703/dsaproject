@@ -46,7 +46,7 @@ class FrameFourteenScreen extends GetWidget<FrameFourteenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          SizedBox(height: 343.v),
+                          SizedBox(height: 366.v),
                           CustomImageView(
                             imagePath: ImageConstant.imgCloseofgavelincourtroom,
                             height: 81.v,
@@ -61,7 +61,7 @@ class FrameFourteenScreen extends GetWidget<FrameFourteenController> {
                               right: 38.h,
                             ),
                             child: Text(
-                              "Find all types of legal services in \none app, with an easy process and\nmultiple benefits.".tr,
+                              "Find all types of legal services in one app, with an easy process and multiple benefits.".tr,
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
@@ -84,9 +84,10 @@ class FrameFourteenScreen extends GetWidget<FrameFourteenController> {
                               top: 163.v,
                               right: 16.h,
                             ),
-                            buttonTextStyle:
-                                CustomTextStyles.labelLargeInterGray90001,
-                          ),
+                            buttonTextStyle: CustomTextStyles.labelLargeInterGray90002.copyWith(
+                              color: Colors.yellow, // Set the text color to yellow.
+                            )
+                          )
                         ],
                       ),
                     ),
