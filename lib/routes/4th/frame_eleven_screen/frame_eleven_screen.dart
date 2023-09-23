@@ -39,21 +39,24 @@ class FrameElevenScreen extends GetWidget<FrameElevenController> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(height: 209.v),
-                  CustomImageView(
-                    svgPath: ImageConstant.imgFrameBlue800,
-                    height: 67.v,
-                    width: 83.h,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Image.asset(
+                     'assets/images/hc.jpeg',
+                     height: 67.v,
+                     width: 83.h,
                   ),
                   SizedBox(height: 21.v),
                   Text(
-                    "LEGALLY".tr,
+                    "NAYAY BANDHU".tr,
                     style: theme.textTheme.titleLarge,
                   ),
                   SizedBox(height: 21.v),
                   SizedBox(
                     width: 142.h,
                     child: Text(
-                      "“Explore the law expertly\n& with ease”".tr,
+                      "Explore the law expertly & with ease".tr,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,

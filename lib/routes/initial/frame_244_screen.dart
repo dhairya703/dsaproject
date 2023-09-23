@@ -45,21 +45,21 @@ class Frame244Screen extends GetWidget<Frame244Controller> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        SizedBox(height: 25.v),
-                                        CustomImageView(
-                                            svgPath: ImageConstant.imgArrowleft,
-                                            height: 36.adaptSize,
-                                            width: 36.adaptSize,
-                                            onTap: () {
-                                              onTapImgArrowleftone();
-                                            }),
+                                        SizedBox(height: 89.v),
+                                        // CustomImageView(
+                                        //     svgPath: ImageConstant.imgArrowleft,
+                                        //     height: 36.adaptSize,
+                                        //     width: 36.adaptSize,
+                                        //     onTap: () {
+                                        //       onTapImgArrowleftone();
+                                        //     }),
                                         SizedBox(height: 395.v),
                                         Align(
                                             alignment: Alignment.center,
                                             child: SizedBox(
                                                 width: 245.h,
                                                 child: Text(
-                                                    "Choose the best verified lawyer profiles\n in your area based on qualifications, \nexperience, and reviews."
+                                                    "Choose the best verified lawyer profiles in your area based on qualifications, experience, and reviews."
                                                         .tr,
                                                     maxLines: 3,
                                                     overflow:
@@ -89,9 +89,14 @@ class Frame244Screen extends GetWidget<Frame244Controller> {
                                                 child: CustomImageView(
                                                     svgPath: ImageConstant
                                                         .imgArrowrightGray90002)),
-                                            buttonTextStyle: CustomTextStyles
-                                                .labelLargeInterGray90002)
-                                      ]))),
+                                            buttonTextStyle: CustomTextStyles.labelLargeInterGray90002.copyWith(
+                                              color: Colors.yellow, // Set the text color to yellow.
+                                            ),
+                                        )
+                                      ]
+                                  )
+                              )
+                          ),
                           CustomImageView(
                               imagePath: ImageConstant
                                   .imgCloseofgavelincourtroom251x317,

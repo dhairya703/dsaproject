@@ -26,7 +26,7 @@ class _FetchRequestsScreenState extends State<FetchRequestsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Request Pending"),
+        title: Text("Nyaya Bandhu"),
       ),
       body: Column(
         children: [
@@ -73,7 +73,7 @@ class _FetchRequestsScreenState extends State<FetchRequestsScreen> {
                         _showDetailsDialog(data);
                       },
                       child: Card(
-                        color: Colors.red,
+                        color: Color(0xff9CB9ACFF),
                         child:
                           Column(
                             children:[ ListTile(
@@ -96,7 +96,8 @@ class _FetchRequestsScreenState extends State<FetchRequestsScreen> {
                             ),
                               Text(data['contactnumber'] ?? ''),
                               Text(data['address'] ?? '')
-                     ] ),
+                     ]
+                          ),
 
                       ),
                     );
@@ -107,6 +108,25 @@ class _FetchRequestsScreenState extends State<FetchRequestsScreen> {
           ),
         ],
       ),
+    bottomNavigationBar: BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+    icon: Icon(Icons.home),
+    label: 'Home',
+    backgroundColor: Color(0xffF5F5DC),
+    ),
+    BottomNavigationBarItem(
+    icon: Icon(Icons.search),
+    label: 'Search',
+    backgroundColor: Color(0xffF5F5DC),
+    ),
+    BottomNavigationBarItem(
+    icon: Icon(Icons.person),
+    label: 'Profile',
+    backgroundColor: Color(0xffF9F5DC),
+    ),
+    ]
+    )
     );
   }
 

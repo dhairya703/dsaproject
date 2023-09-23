@@ -3,6 +3,8 @@ import 'package:firestore/user/sendrequest.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
+
 class Hourly extends StatefulWidget {
   @override
   _HourlyState createState() => _HourlyState();
@@ -26,7 +28,7 @@ class _HourlyState extends State<Hourly> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Request Pending"),
+        title: Text("NAYAY BANDHU"),
       ),
       body: Column(
         children: [
@@ -74,22 +76,10 @@ class _HourlyState extends State<Hourly> {
                       },
                       child: Card(
                         color: Colors.blue,
-                        child:
-                        Column(
-                            children:[ ListTile(
+                        child: Column(
+                          children: [
+                            ListTile(
                               title: Text(data['name'] ?? ''),
-                              // subtitle: Text(data['legalissue'] ?? ''),
-                              // leading: data['images'] != null
-                              //     ? Image.network(
-                              //   data['images'],
-                              //   errorBuilder: (context, error, stackTrace) {
-                              //     return Image.network(
-                              //         'images'); // Replace with your placeholder image
-                              //   },
-                              // )
-                              //     : Image.asset(
-                              //     'Image not available'), // Display a placeholder if 'image_url' is missing
-
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -101,10 +91,8 @@ class _HourlyState extends State<Hourly> {
                                 ],
                               ),
                             ),
-
-
-                            ] ),
-
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -113,6 +101,26 @@ class _HourlyState extends State<Hourly> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+              backgroundColor: Color(0xffF5F5DC),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+              backgroundColor: Color(0xffF5F5DC),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+              backgroundColor: Color(0xffF9F5DC),
+          ),
+        ],
+
       ),
     );
   }
@@ -149,10 +157,7 @@ class _HourlyState extends State<Hourly> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ChatPage()),
-                      );
+                      // Handle the approve action
                     },
                     child: Text('Approve'),
                   ),
