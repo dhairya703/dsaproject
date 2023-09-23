@@ -1,3 +1,4 @@
+import 'package:firestore/bots/lib/home_page.dart';
 import 'package:firestore/displaying%20data.dart';
 import 'package:firestore/documentation/documenthome.dart';
 import 'package:firestore/lawyerspage/news.dart';
@@ -422,9 +423,12 @@ class _UserplatState extends State<Userplat> {
                             .spaceEvenly, // Adjust the alignment as needed
                         children: [
                           GestureDetector(
-                            onTap: () => setState(() {
-                              _launched = _launchInWebViewOrVC(toCatch);
-                            },),
+                            onTap:() {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  HomePage()),
+                              );
+                            },
                             child: Column(
                               children: [
                                 Container(
