@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firestore/bots/lib/home_page.dart';
 import 'package:firestore/displaying%20data.dart';
 import 'package:firestore/documentation/documenthome.dart';
 import 'package:firestore/help.dart';
@@ -69,7 +70,7 @@ class _LawyerplatState extends State<Lawyerplat> {
     } else if (index == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => NewsList()),
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     } else if (index == 2) {
       Navigator.push(

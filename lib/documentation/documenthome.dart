@@ -9,11 +9,19 @@ class DocumentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(
         title: Text("NYAYA BANDHU"),
       ),
       body: SingleChildScrollView(
         child:  Column(
+=======
+        appBar: AppBar(
+          title: Text("NYAYA BANDHU"),
+        ),
+        body: SingleChildScrollView(
+          child:  Column(
+>>>>>>> branch4
             children: [Image.asset(
               "assets/images/employe.jpeg",
               // You can adjust the width and height as needed
@@ -189,6 +197,7 @@ class DocumentPage extends StatelessWidget {
             ],
           ),
         ),
+<<<<<<< HEAD
     bottomNavigationBar: BottomNavigationBar(
     items: const <BottomNavigationBarItem>[
     BottomNavigationBarItem(
@@ -208,6 +217,27 @@ class DocumentPage extends StatelessWidget {
     ),
     ],
     )
+=======
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+              backgroundColor: Color(0xffF5F5DC),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+              backgroundColor: Color(0xffF5F5DC),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+              backgroundColor: Color(0xffF9F5DC),
+            ),
+          ],
+        )
+>>>>>>> branch4
 
     );
   }

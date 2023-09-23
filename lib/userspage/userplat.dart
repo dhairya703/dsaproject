@@ -1,15 +1,22 @@
+import 'package:firestore/bots/lib/home_page.dart';
 import 'package:firestore/displaying%20data.dart';
+import 'package:firestore/documentation/documenthome.dart';
+import 'package:firestore/lawyerspage/news.dart';
 import 'package:firestore/userspage/civil.dart';
+import 'package:firestore/userspage/container.dart';
 import 'package:firestore/userspage/corporate.dart';
 import 'package:firestore/userspage/criminalpage.dart';
+import 'package:firestore/userspage/hourlyconsultationupload.dart';
 import 'package:firestore/userspage/intellectualproperty.dart';
 import 'package:firestore/userspage/publicinterest.dart';
+import 'package:firestore/userspage/seemore.dart';
 import 'package:firestore/userspage/userprofile.dart';
 import 'package:firestore/widgets/roundbutton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Userplat extends StatefulWidget {
   const Userplat({Key? key}) : super(key: key);
@@ -19,6 +26,7 @@ class Userplat extends StatefulWidget {
 }
 
 class _UserplatState extends State<Userplat> {
+  Future<void>? _launched;
   final List<String> cardData = [
     "Card 1",
     "Card 2",
@@ -73,6 +81,24 @@ class _UserplatState extends State<Userplat> {
 
   @override
   Widget build(BuildContext context) {
+
+    final Uri tofetch = Uri(
+      scheme: 'https',
+      host: 'services.ecourts.gov.in',
+      path: 'ecourtindia_v6/',
+    );
+    //https://edaakhil.nic.in/edaakhil/
+    final Uri toCatch = Uri(
+      scheme: 'https',
+      host: 'edaakhil.nic.in',
+      path: 'edaakhil/',
+    );
+    //https://main.sci.gov.in/court-fees-calculator
+    final Uri toCatch1 = Uri(
+      scheme: 'https',
+      host: 'main.sci.gov.in',
+      path: 'court-fees-calculator/',
+    );
     return Scaffold( backgroundColor:  Color(0xFF061E35),
       appBar: AppBar(
         backgroundColor: Color(0xff660033)
@@ -83,6 +109,7 @@ class _UserplatState extends State<Userplat> {
           child: Column(
         children: [
           Column(children: <Widget>[
+            Text("|| यतो धर्मस्ततो जय: ||",style: TextStyle(color: Colors.white,fontSize: 20),),
             Container(
               height: 160, // Adjust the height as needed
               child: PageView.builder(
@@ -124,9 +151,17 @@ class _UserplatState extends State<Userplat> {
             ),
             Column(
               children: [
+                ContainerWithText(color: Colors.red, text: 'High Court Complexes', Num: '39',),
+                SizedBox(height: 5,),
+                ContainerWithText(color: Colors.lightBlue, text: 'HC Pending Cases', Num: '6.08M',),
+                SizedBox(height: 5,),
+                ContainerWithText(color: Colors.orange, text: 'HC Disposed Cases', Num: '37.22M',),
+                SizedBox(height: 5,),
+                ContainerWithText(color: Colors.green, text: 'Hc Cases Listed Today', Num: '80.26K',),
+                SizedBox(height: 5,),
                 Container(
                   width: 345,
-                  height: 275,
+                  height: 375,
                   decoration: ShapeDecoration(
                     color: Color(0xFF061E35),
                     shape: RoundedRectangleBorder(
@@ -156,6 +191,11 @@ class _UserplatState extends State<Userplat> {
                         children: [
                           GestureDetector(
                             onTap: () {
+                              //HourlyUpload
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => UploadDataPage() ),
+                              );
                               // Handle the click event for the first container here
                               print("Container 1 clicked");
                             },
@@ -191,8 +231,11 @@ class _UserplatState extends State<Userplat> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // Handle the click event for the first container here
-                              print("Container 2 clicked");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => DocumentPage() ),
+                              );
+
                             },
                             child: Column(
                               children: [
@@ -225,10 +268,11 @@ class _UserplatState extends State<Userplat> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {
-                              // Handle the click event for the first container here
-                              print("Container 3 clicked");
-                            },
+
+                            onTap: () => setState(() {
+                              _launched = _launchInWebViewOrVC(tofetch);
+                            },),
+
                             child: Column(
                               children: [
                                 Container(
@@ -247,7 +291,7 @@ class _UserplatState extends State<Userplat> {
                                 ),
                                 SizedBox(height: 15),
                                 Text(
-                                  'DISPUTES',
+                                  'Ecourt',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 8,
@@ -263,15 +307,127 @@ class _UserplatState extends State<Userplat> {
                       ),
                       SizedBox(
                         height: 20,
-                      ),
+                      ),Row(
+                        mainAxisAlignment: MainAxisAlignment
+                            .spaceEvenly, // Adjust the alignment as needed
+                        children: [
+                          GestureDetector(
+                            onTap: () => setState(() {
+                              _launched = _launchInWebViewOrVC(toCatch);
+                            },),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 82,
+                                  height: 79,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: CircleBorder(), // Use CircleBorder for oval shape
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/img_layer1_black_900_40x34.png', // Replace with your image path
+                                    width: 30, // Adjust the image size as needed
+                                    height: 50,
+                                    fit: BoxFit.cover, // You can use BoxFit to specify how the image should be fitted
+                                  ),
+                                ),
+                                //img_layer1_black_900_40x34
+                                SizedBox(height: 15),
+                                Text(
+                                  'eFiling',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => setState(() {
+                              _launched = _launchInWebViewOrVC(toCatch1);
+                            },),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 82,
+                                  height: 79,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: CircleBorder(), // Use CircleBorder for oval shape
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/img_layer1_black_900_39x39.png', // Replace with your image path
+                                    width: 30, // Adjust the image size as needed
+                                    height: 50,
+                                    fit: BoxFit.fill, // You can use BoxFit to specify how the image should be fitted
+                                  ),
+                                ),
+                                SizedBox(height: 15),
+
+                                Text(
+                                  'CourtFee Calculator',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // Handle the click event for the first container here
+                              print("Container 3 clicked");
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 82,
+                                  height: 79,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: CircleBorder(), // Use CircleBorder for oval shape
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/img_screenshot20230919at320.png', // Replace with your image path
+                                    width: 30, // Adjust the image size as needed
+                                    height: 50,
+                                    fit: BoxFit.fill, // You can use BoxFit to specify how the image should be fitted
+                                  ),
+                                ),
+                                SizedBox(height: 15),
+                                Text(
+                                  'HistoryCase',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8,
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment
                             .spaceEvenly, // Adjust the alignment as needed
                         children: [
                           GestureDetector(
-                            onTap: () {
-                              // Handle the click event for the first container here
-                              print("Container 3 clicked");
+                            onTap:() {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  HomePage()),
+                              );
                             },
                             child: Column(
                               children: [
@@ -292,7 +448,7 @@ class _UserplatState extends State<Userplat> {
                                 //img_layer1_black_900_40x34
                                 SizedBox(height: 15),
                                 Text(
-                                  'CONSULTANT',
+                                  'Bots',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 8,
@@ -306,8 +462,10 @@ class _UserplatState extends State<Userplat> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // Handle the click event for the first container here
-                              print("Container 3 clicked");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  NewsList()),
+                              );
                             },
                             child: Column(
                               children: [
@@ -327,7 +485,7 @@ class _UserplatState extends State<Userplat> {
                                 ),
                                 SizedBox(height: 15),
                                 Text(
-                                  'LEGAL ADVICE',
+                                  'News',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 8,
@@ -341,8 +499,12 @@ class _UserplatState extends State<Userplat> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // Handle the click event for the first container here
-                              print("Container 3 clicked");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  seemore()),
+                              );
+
+                              // Add your custom logic here
                             },
                             child: Column(
                               children: [
@@ -384,7 +546,7 @@ class _UserplatState extends State<Userplat> {
             SizedBox(
               height: 20,
             ),
-
+Text("Lawyers",style: TextStyle(color: Colors.white,fontSize: 20),),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -649,5 +811,10 @@ class _UserplatState extends State<Userplat> {
 
 
     );
+  }
+}
+Future<void> _launchInWebViewOrVC(Uri url) async {
+  if (!await launchUrl(url, mode: LaunchMode.inAppWebView)) {
+    throw Exception('Could not launch $url');
   }
 }
